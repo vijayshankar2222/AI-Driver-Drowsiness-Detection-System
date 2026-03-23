@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Drowsiness Detection</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+
+            /* Background Image */
+            background: url('https://images.unsplash.com/photo-1695427729798-e0a80d3b2bf4?q=80&w=1170') no-repeat center/cover;
+
+            /* Overlay for clarity */
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Dark transparent overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 0;
+        }
+
+        h1 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Glass Container */
+        .container {
+            position: relative;
+            z-index: 1;
+
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+
+            width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+
+            animation: slideUp 1s ease;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 92%;
+            padding: 10px;
+            margin: 6px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+
+            background: rgba(255,255,255,0.2);
+            color: white;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        input:focus {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.03);
+        }
+
+        button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            padding: 12px;
+            width: 95%;
+            border: none;
+            border-radius: 25px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #ff512f, #dd2476);
+            transform: scale(1.08);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚗 Driver Drowsiness Detection System</h1>
+
+    <div class="container">
+        <h2>Enter Driver Details</h2>
+
+        <form action="/predict" method="post">
+
+            <input type="text" name="Age" placeholder="Age">
+            <input type="text" name="Gender" placeholder="Gender (0 Male, 1 Female)">
+            <input type="text" name="Blink_Rate" placeholder="Blink Rate">
+            <input type="text" name="Eye_Closure_Duration" placeholder="Eye Closure Duration">
+            <input type="text" name="Yawning_Count" placeholder="Yawning Count">
+            <input type="text" name="Heart_Rate" placeholder="Heart Rate">
+            <input type="text" name="Head_Tilt_Angle" placeholder="Head Tilt Angle">
+            <input type="text" name="Steering_Variation" placeholder="Steering Variation">
+            <input type="text" name="Reaction_Time" placeholder="Reaction Time">
+            <input type="text" name="Sleep_Hours_Last_Night" placeholder="Sleep Hours Last Night">
+
+            <button type="submit">🚀 Predict Drowsiness</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
